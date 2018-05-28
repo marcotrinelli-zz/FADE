@@ -9,7 +9,7 @@ import string
 
 ''' CONFIG '''
 config = ConfigParser.ConfigParser()
-config.read('config.cfg')
+config.read('../cfg/config.cfg')
 kb = config.get('CATEGORIES','KnowledgeBase')
 categories_cfg = config.get('CATEGORIES','Cat').split(',')
 df_token = config.get('NLUs','DialogflowDeveloperAccessToken')
