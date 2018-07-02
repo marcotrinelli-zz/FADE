@@ -67,10 +67,9 @@ print "%d entities retrieved." % len(results["results"]["bindings"])
 
 ''' Build JSON '''
 for result in results["results"]["bindings"]:
-    entry = result["label"]["value"]#.encode('ascii', errors='ignore').decode('ascii')
+    entry = result["label"]["value"]
 	# removes special characters and ( ) that give errors in DF
-    # entry = re.sub(r'[^\x00-\x7F]+','',F entry)
-    entry = entry.replace("\"", "").replace("(", "").replace(")", "").replace("|", "").replace("<", "")
+    entry = re.sub(r'/["\(\)<>\\\[\]^_\|{}\x00-\x09\x0B-\x0C\x0E-\x1F\x7F-\x9F]/g',' ', entry)
     list_entries.append({"value": entry})
 
 print "%d entities selected" % len(list_entries)
